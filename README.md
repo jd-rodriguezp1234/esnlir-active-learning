@@ -67,6 +67,7 @@ Everything is on the Hub — 🤗 [**ESNLIR Active Learning collection**](https:
 | artifact | what it is |
 |---|---|
 | [`Flaglab/esnlir-al-annotated-test`](https://huggingface.co/datasets/Flaglab/esnlir-al-annotated-test) | the 1,695-pair annotated test set |
+| [`Flaglab/esnlir-annotation-candidates`](https://huggingface.co/datasets/Flaglab/esnlir-annotation-candidates) | the 2,664 confidence-stratified candidates sent to annotators |
 | [`Flaglab/esnlir-al-trajectories`](https://huggingface.co/datasets/Flaglab/esnlir-al-trajectories) | per-round metrics and acquired/removed pool indices for every run |
 | [`Flaglab/ESNLIR-AL-XLM-RoBERTa-NegE`](https://huggingface.co/Flaglab/ESNLIR-AL-XLM-RoBERTa-NegE) | best checkpoint, iter 5, 610k labels |
 | [`Flaglab/ESNLIR-AL-XLM-RoBERTa-LER`](https://huggingface.co/Flaglab/ESNLIR-AL-XLM-RoBERTa-LER) | best checkpoint, iter 7, 800k labels |
@@ -83,11 +84,21 @@ here.
 informal ones (web comments, tweets). Classes are uneven — `neutral` 37.4% (634) against
 `contrasting` 18.4% (312) — which is why **macro F1 is the primary metric**, not accuracy.
 
-Candidates were sampled by model confidence before annotation: a preliminary pass with the released
-ESNLIR XLM-RoBERTa binned them into four confidence strata, concentrating effort on uncertain
-instances. That makes the set diagnostically useful, but it also means it is *enriched for instances
-that checkpoint finds hard*, biasing its own score downward. It still ranks highest, which is what
-makes the comparison robust to the selection effect.
+Candidates were sampled by model confidence before annotation. Both ESNLIR baselines scored the test
+pool, and instances were binned into four strata by their mean max-softmax — `high`, `medium` and
+`low` for pairs both models got right, plus `no` for pairs they got wrong (which is why that
+stratum's confidence spans the whole range: a model can be confidently mistaken). 2,664 candidates
+went to annotators; 1,695 survived.
+
+The full selection pipeline is in [`notebooks/annotation/`](notebooks/annotation/), and the candidate
+pool itself is published as
+[`Flaglab/esnlir-annotation-candidates`](https://huggingface.co/datasets/Flaglab/esnlir-annotation-candidates).
+
+This has two consequences pulling in opposite directions: confidence stratification enriches the set
+for instances the reference checkpoint finds *hard*, biasing its score down, while the
+majority-must-match-connector retention rule keeps only pairs that are *easy to label consistently*,
+biasing scores up. Absolute numbers here are therefore not comparable with the full ESNLIR test
+split — **relative comparisons between systems are the intended use.**
 
 ## Configuration
 
@@ -162,6 +173,8 @@ params/                hyperparameter configs; params/experiments/ holds the swe
 colab/                 notebooks and configs for the Colab runs, plus data prep
 scripts/               smoke test and batch experiment runner
 notebooks/             single-pair prediction against a published checkpoint
+  annotation/          building the annotated test set: scoring, confidence stratification,
+                       Label Studio round-trip (see its README)
 docs/                  ACTIVE_LEARNING_RUN.md — end-to-end run guide
 ```
 
