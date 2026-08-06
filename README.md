@@ -62,7 +62,7 @@ over the whole 1M pool. They are a ceiling, not an AL arm.
 
 ## Artifacts
 
-Everything is on the Hub — 🤗 [**ESNLIR Active Learning collection**](https://huggingface.co/collections/Flaglab).
+Everything is on the Hub — 🤗 [**ESNLIR Active Learning collection**](https://huggingface.co/collections/Flaglab/esnlir-active-learning-6a74c197d0a463e76d2dea82).
 
 | artifact | what it is |
 |---|---|
