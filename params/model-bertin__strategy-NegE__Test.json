@@ -1,0 +1,23 @@
+{
+  "model_type": "bertin-project/bertin-roberta-base-spanish",
+  "dataset_folder": "data",
+  "n_epochs": 1,
+  "output_folder": "models/bertin_active_NegE",
+  "monitor": "f1_score",
+  "patience": 1,
+  "batch_size": 16,
+  "only_premise": false,
+  "warmup_steps": 0,
+  "random_seed": 42,
+  "learning_rate": 2e-5,
+  "device": "cuda",
+  "max_samples": 1000000,
+  "max_len": 256,
+  "active_learning": true,
+  "al_strategy": "NegE",
+  "al_L": 264,
+  "al_K": 100000,
+  "al_remove_k": 0,
+  "al_scoring_batch_size": 64,
+  "warm_start": true
+}

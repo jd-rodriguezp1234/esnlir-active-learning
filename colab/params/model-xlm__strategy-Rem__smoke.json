@@ -1,0 +1,33 @@
+{
+  "model_type": "FacebookAI/xlm-roberta-base",
+  "dataset_folder": "/content/data",
+  "n_epochs": 1,
+  "output_folder": "models/xlm_active_Rem_smoke",
+  "monitor": "f1_score",
+  "patience": 2,
+  "batch_size": 32,
+  "eval_batch_size": 256,
+  "bf16": true,
+  "dataloader_num_workers": 4,
+  "only_premise": false,
+  "warmup_steps": 0,
+  "random_seed": 42,
+  "learning_rate": 2e-05,
+  "device": "cuda",
+  "max_samples": 20000,
+  "max_len": 256,
+  "active_learning": true,
+  "al_strategy": "Rem",
+  "al_L": 264,
+  "al_K": 4000,
+  "al_seed_size": 2000,
+  "al_remove_k": 1000,
+  "al_scoring_batch_size": 256,
+  "al_report_n": 400,
+  "al_eval_splits": [
+    "test_full"
+  ],
+  "warm_start": true,
+  "al_rem_select_mode": "random",
+  "al_rem_utility": "energy"
+}

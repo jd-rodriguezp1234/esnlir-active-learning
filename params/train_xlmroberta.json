@@ -1,0 +1,16 @@
+{
+    "model_type": "FacebookAI/xlm-roberta-base",
+    "dataset_folder": "data",
+    "n_epochs": 3,
+    "output_folder": "models/xlmroberta",
+    "monitor": "f1_score",
+    "patience": 3,
+    "batch_size": 64,
+    "only_premise": false,
+    "warmup_steps": 0,
+    "random_seed": 42,
+    "learning_rate": 2e-5,
+    "device": "cuda",
+    "max_samples": 1000000,
+    "max_len": 256
+}

@@ -1,0 +1,31 @@
+# Virtual environments
+venv/
+.venv/
+
+# Large model weights — published to the Hugging Face Hub instead
+models/
+notebooks/models/
+*.bin
+*.pt
+*.safetensors
+
+# Datasets — pulled from the Hub, see the README
+data/
+*.jsonl
+test_length_mismatch.json
+test_negation.json
+test_overlap.json
+test_spelling.json
+*.zip
+
+# Manuscript sources are deliberately not versioned here
+paper/
+
+# Logs, caches, IDE
+logs/
+*.log
+*.swp
+.ipynb_checkpoints/
+__pycache__/
+*.egg-info/
+.DS_Store
