@@ -3,8 +3,9 @@
 Pool-based **active learning for Spanish Natural Language Inference**: two energy-based acquisition
 strategies on the ESNLIR corpus, evaluated on a newly annotated 1,695-pair test set.
 
-> **Active Learning for Spanish Natural Language Inference**
+> **Active Learning for Spanish Natural Language Inference on a Heterogeneous Multi-Domain Corpus**
 > Diego Ortiz, Johan R. Portela, Ruben Manrique — Universidad de los Andes, Bogotá
+> *Advances in Artificial Intelligence — IBERAMIA 2026* (to appear)
 
 Annotation is expensive. The question here is how much of it you can skip: if a model chooses which
 examples to label next, how close does it get to training on everything?
@@ -185,11 +186,15 @@ interpreting any short run.
 ## Citation
 
 ```bibtex
-@misc{ortiz_esnlir_active_learning,
-  author = {Ortiz, Diego and Portela, Johan R. and Manrique, Ruben},
-  title  = {Active Learning for Spanish Natural Language Inference},
-  school = {Universidad de los Andes, Bogot{\'a}, Colombia},
-  year   = {2026},
+@InProceedings{ortiz2026activelearningspanishnli,
+  author    = {Ortiz, Diego and Portela, Johan R. and Manrique, Ruben},
+  title     = {Active Learning for Spanish Natural Language Inference
+               on a Heterogeneous Multi-Domain Corpus},
+  booktitle = {Advances in Artificial Intelligence -- IBERAMIA 2026},
+  year      = {2026},
+  publisher = {Springer Nature Switzerland},
+  address   = {Cham},
+  note      = {To appear},
 }
 ```
 
